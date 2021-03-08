@@ -1,0 +1,2074 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HPE Unified Functional Testing" productVer="14.03" os="Windows 7" host="HIBACL54346"><DocLocation><![CDATA[D:\E drive\QTP_Training_Data\Capgemini Training\OutPutData_Example]]></DocLocation></General>
+<Doc rID="T1"   productName= "HPE Unified Functional Testing"  >
+<DName><![CDATA[OutPutData_Example]]></DName>
+<Res><![CDATA[Res4]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[BookFlight]]></AName>
+<AIter rID="T5" iterID="1" isCountable="False" >
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:21]]></Time>
+<TimeTick>1528193721</TimeTick>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["London"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:21]]></Time>
+<TimeTick>1528193721</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="11" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Paris"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:22]]></Time>
+<TimeTick>1528193722</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="13" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["14-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:22]]></Time>
+<TimeTick>1528193722</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="15" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:22]]></Time>
+<TimeTick>1528193722</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="17" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:23]]></Time>
+<TimeTick>1528193723</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="19" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:23]]></Time>
+<TimeTick>1528193723</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="21" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:24]]></Time>
+<TimeTick>1528193724</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="22" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:24]]></Time>
+<TimeTick>1528193724</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="24" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:24]]></Time>
+<TimeTick>1528193724</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="26" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:25]]></Time>
+<TimeTick>1528193725</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="28" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:25]]></Time>
+<TimeTick>1528193725</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="30" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:31]]></Time>
+<TimeTick>1528193731</TimeTick>
+<HtmlStep rID="T19">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:45:31</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"319"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193731</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="32" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="31" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:31]]></Time>
+<TimeTick>1528193731</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="34" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:31]]></Time>
+<TimeTick>1528193731</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="36" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:31]]></Time>
+<TimeTick>1528193731</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="38" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["319"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:32]]></Time>
+<TimeTick>1528193732</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="40" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:32]]></Time>
+<TimeTick>1528193732</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="42" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:32]]></Time>
+<TimeTick>1528193732</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="44" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="10" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="8" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T26" iterID="2" isCountable="False" >
+<Step rID="T27">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:33]]></Time>
+<TimeTick>1528193733</TimeTick>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Denver"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:33]]></Time>
+<TimeTick>1528193733</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="49" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Portland"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:33]]></Time>
+<TimeTick>1528193733</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="51" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["14-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:34]]></Time>
+<TimeTick>1528193734</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="53" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:34]]></Time>
+<TimeTick>1528193734</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="55" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:34]]></Time>
+<TimeTick>1528193734</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="57" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:35]]></Time>
+<TimeTick>1528193735</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="59" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:35]]></Time>
+<TimeTick>1528193735</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="60" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:35]]></Time>
+<TimeTick>1528193735</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="62" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:35]]></Time>
+<TimeTick>1528193735</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="64" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:36]]></Time>
+<TimeTick>1528193736</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="66" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:36]]></Time>
+<TimeTick>1528193736</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="68" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:42]]></Time>
+<TimeTick>1528193742</TimeTick>
+<HtmlStep rID="T40">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:45:42</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"320"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193742</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="70" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="69" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:42]]></Time>
+<TimeTick>1528193742</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="72" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:43]]></Time>
+<TimeTick>1528193743</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="74" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:43]]></Time>
+<TimeTick>1528193743</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="76" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["320"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:43]]></Time>
+<TimeTick>1528193743</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="78" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:44]]></Time>
+<TimeTick>1528193744</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="80" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:44]]></Time>
+<TimeTick>1528193744</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="82" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="48" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="46" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 2 (Row 2)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T47" iterID="3" isCountable="False" >
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:44]]></Time>
+<TimeTick>1528193744</TimeTick>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Seattle"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:44]]></Time>
+<TimeTick>1528193744</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="87" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Sydney"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:45]]></Time>
+<TimeTick>1528193745</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="89" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["14-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:45]]></Time>
+<TimeTick>1528193745</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="91" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:45]]></Time>
+<TimeTick>1528193745</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="93" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:46]]></Time>
+<TimeTick>1528193746</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="95" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:46]]></Time>
+<TimeTick>1528193746</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="97" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:47]]></Time>
+<TimeTick>1528193747</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="98" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:47]]></Time>
+<TimeTick>1528193747</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="100" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:47]]></Time>
+<TimeTick>1528193747</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="102" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:47]]></Time>
+<TimeTick>1528193747</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="104" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:48]]></Time>
+<TimeTick>1528193748</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="106" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T60">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:53]]></Time>
+<TimeTick>1528193753</TimeTick>
+<HtmlStep rID="T61">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:45:53</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"321"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193753</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="108" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="107" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:54]]></Time>
+<TimeTick>1528193754</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="110" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:54]]></Time>
+<TimeTick>1528193754</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="112" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:54]]></Time>
+<TimeTick>1528193754</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="114" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["321"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:55]]></Time>
+<TimeTick>1528193755</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="116" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:55]]></Time>
+<TimeTick>1528193755</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="118" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:55]]></Time>
+<TimeTick>1528193755</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="120" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="86" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="84" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 3 (Row 3)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T68" iterID="4" isCountable="False" >
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:56]]></Time>
+<TimeTick>1528193756</TimeTick>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Frankfurt"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:56]]></Time>
+<TimeTick>1528193756</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="125" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Zurich"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:56]]></Time>
+<TimeTick>1528193756</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="127" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["14-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:56]]></Time>
+<TimeTick>1528193756</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="129" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:57]]></Time>
+<TimeTick>1528193757</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="131" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:57]]></Time>
+<TimeTick>1528193757</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="133" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:58]]></Time>
+<TimeTick>1528193758</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="135" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:58]]></Time>
+<TimeTick>1528193758</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="136" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:58]]></Time>
+<TimeTick>1528193758</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="138" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T78">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:58]]></Time>
+<TimeTick>1528193758</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="140" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T79">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:59]]></Time>
+<TimeTick>1528193759</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="142" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:45:59]]></Time>
+<TimeTick>1528193759</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="144" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:05]]></Time>
+<TimeTick>1528193765</TimeTick>
+<HtmlStep rID="T82">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:46:05</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"322"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193765</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="146" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="145" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T83">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:05]]></Time>
+<TimeTick>1528193765</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="148" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T84">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:06]]></Time>
+<TimeTick>1528193766</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="150" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T85">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:06]]></Time>
+<TimeTick>1528193766</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="152" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T86">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["322"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:06]]></Time>
+<TimeTick>1528193766</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="154" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:06]]></Time>
+<TimeTick>1528193766</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="156" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:07]]></Time>
+<TimeTick>1528193767</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="158" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="124" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="122" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 4 (Row 4)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T89" iterID="5" isCountable="False" >
+<Step rID="T90">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:08]]></Time>
+<TimeTick>1528193768</TimeTick>
+<Step rID="T91">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Los Angeles"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:08]]></Time>
+<TimeTick>1528193768</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="163" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["San Francisco"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:08]]></Time>
+<TimeTick>1528193768</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="165" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T93">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["14-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:08]]></Time>
+<TimeTick>1528193768</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="167" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T94">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:09]]></Time>
+<TimeTick>1528193769</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="169" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T95">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:09]]></Time>
+<TimeTick>1528193769</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="171" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T96">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:09]]></Time>
+<TimeTick>1528193769</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="173" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T97">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:10]]></Time>
+<TimeTick>1528193770</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="174" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T98">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:10]]></Time>
+<TimeTick>1528193770</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="176" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T99">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:10]]></Time>
+<TimeTick>1528193770</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="178" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T100">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:11]]></Time>
+<TimeTick>1528193771</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="180" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T101">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:11]]></Time>
+<TimeTick>1528193771</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="182" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T102">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:17]]></Time>
+<TimeTick>1528193777</TimeTick>
+<HtmlStep rID="T103">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:46:17</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"323"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193777</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="184" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="183" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T104">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:17]]></Time>
+<TimeTick>1528193777</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="186" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T105">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:17]]></Time>
+<TimeTick>1528193777</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="188" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T106">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:18]]></Time>
+<TimeTick>1528193778</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="190" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T107">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["323"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:18]]></Time>
+<TimeTick>1528193778</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="192" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T108">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:18]]></Time>
+<TimeTick>1528193778</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="194" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T109">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:19]]></Time>
+<TimeTick>1528193779</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="196" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="162" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="160" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 5 (Row 5)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T110" iterID="6" isCountable="False" >
+<Step rID="T111">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:19]]></Time>
+<TimeTick>1528193779</TimeTick>
+<Step rID="T112">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["London"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:19]]></Time>
+<TimeTick>1528193779</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="201" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T113">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Portland"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:20]]></Time>
+<TimeTick>1528193780</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="203" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T114">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["23-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:20]]></Time>
+<TimeTick>1528193780</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="205" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T115">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:20]]></Time>
+<TimeTick>1528193780</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="207" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T116">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:21]]></Time>
+<TimeTick>1528193781</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="209" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T117">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:21]]></Time>
+<TimeTick>1528193781</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="211" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T118">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:21]]></Time>
+<TimeTick>1528193781</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="212" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T119">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:21]]></Time>
+<TimeTick>1528193781</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="214" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T120">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:22]]></Time>
+<TimeTick>1528193782</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="216" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T121">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:22]]></Time>
+<TimeTick>1528193782</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="218" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T122">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:22]]></Time>
+<TimeTick>1528193782</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="220" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T123">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:28]]></Time>
+<TimeTick>1528193788</TimeTick>
+<HtmlStep rID="T124">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:46:28</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"324"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193788</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="222" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="221" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T125">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:28]]></Time>
+<TimeTick>1528193788</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="224" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T126">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:29]]></Time>
+<TimeTick>1528193789</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="226" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T127">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:29]]></Time>
+<TimeTick>1528193789</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="228" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T128">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["324"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:29]]></Time>
+<TimeTick>1528193789</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="230" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T129">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:29]]></Time>
+<TimeTick>1528193789</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="232" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T130">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:30]]></Time>
+<TimeTick>1528193790</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="234" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="200" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="198" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 6 (Row 6)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T131" iterID="7" isCountable="False" >
+<Step rID="T132">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:31]]></Time>
+<TimeTick>1528193791</TimeTick>
+<Step rID="T133">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Denver"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:31]]></Time>
+<TimeTick>1528193791</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="239" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T134">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Paris"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:31]]></Time>
+<TimeTick>1528193791</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="241" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T135">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["23-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:31]]></Time>
+<TimeTick>1528193791</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="243" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T136">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:31]]></Time>
+<TimeTick>1528193791</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="245" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T137">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:32]]></Time>
+<TimeTick>1528193792</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="247" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T138">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:32]]></Time>
+<TimeTick>1528193792</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="249" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T139">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:33]]></Time>
+<TimeTick>1528193793</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="250" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T140">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:33]]></Time>
+<TimeTick>1528193793</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="252" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T141">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:33]]></Time>
+<TimeTick>1528193793</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="254" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T142">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:33]]></Time>
+<TimeTick>1528193793</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="256" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T143">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:34]]></Time>
+<TimeTick>1528193794</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="258" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T144">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:40]]></Time>
+<TimeTick>1528193800</TimeTick>
+<HtmlStep rID="T145">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:46:40</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"325"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193800</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="260" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="259" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T146">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:40]]></Time>
+<TimeTick>1528193800</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="262" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T147">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:40]]></Time>
+<TimeTick>1528193800</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="264" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T148">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:40]]></Time>
+<TimeTick>1528193800</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="266" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T149">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["325"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:41]]></Time>
+<TimeTick>1528193801</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="268" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T150">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:41]]></Time>
+<TimeTick>1528193801</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="270" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T151">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:41]]></Time>
+<TimeTick>1528193801</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="272" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="238" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="236" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 7 (Row 7)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T152" iterID="8" isCountable="False" >
+<Step rID="T153">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:42]]></Time>
+<TimeTick>1528193802</TimeTick>
+<Step rID="T154">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Seattle"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:42]]></Time>
+<TimeTick>1528193802</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="277" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T155">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Zurich"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:42]]></Time>
+<TimeTick>1528193802</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="279" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T156">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["23-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:43]]></Time>
+<TimeTick>1528193803</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="281" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T157">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:43]]></Time>
+<TimeTick>1528193803</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="283" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T158">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:43]]></Time>
+<TimeTick>1528193803</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="285" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T159">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:46:44]]></Time>
+<TimeTick>1528193804</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="287" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T160">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object does not exist"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:04]]></Time>
+<TimeTick>1528193824</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="289" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="276" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T161">
+<Obj ><![CDATA[Data Not available for Particual City]]></Obj>
+<Details ><![CDATA[SeattleZurich]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:04]]></Time>
+<TimeTick>1528193824</TimeTick>
+<NodeArgs eType="User" icon="14" nRep="290" status="Failed" Source="BookFlight" SourceLine="26" >
+<Disp><![CDATA[Data Not available for Particual City]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="274" status="Failed" >
+<Disp><![CDATA[BookFlight Iteration 8 (Row 8)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T162" iterID="9" isCountable="False" >
+<Step rID="T163">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:04]]></Time>
+<TimeTick>1528193824</TimeTick>
+<Step rID="T164">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Frankfurt"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:04]]></Time>
+<TimeTick>1528193824</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="295" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T165">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Sydney"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:05]]></Time>
+<TimeTick>1528193825</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="297" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T166">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["23-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:05]]></Time>
+<TimeTick>1528193825</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="299" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T167">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:05]]></Time>
+<TimeTick>1528193825</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="301" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T168">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:06]]></Time>
+<TimeTick>1528193826</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="303" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T169">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:06]]></Time>
+<TimeTick>1528193826</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="305" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T170">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:07]]></Time>
+<TimeTick>1528193827</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="306" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T171">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:07]]></Time>
+<TimeTick>1528193827</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="308" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T172">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:07]]></Time>
+<TimeTick>1528193827</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="310" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T173">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:07]]></Time>
+<TimeTick>1528193827</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="312" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T174">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:08]]></Time>
+<TimeTick>1528193828</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="314" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T175">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:14]]></Time>
+<TimeTick>1528193834</TimeTick>
+<HtmlStep rID="T176">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:47:14</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"326"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193834</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="316" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="315" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T177">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:14]]></Time>
+<TimeTick>1528193834</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="318" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T178">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:14]]></Time>
+<TimeTick>1528193834</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="320" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T179">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:14]]></Time>
+<TimeTick>1528193834</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="322" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T180">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["326"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:15]]></Time>
+<TimeTick>1528193835</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="324" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T181">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:15]]></Time>
+<TimeTick>1528193835</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="326" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T182">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:15]]></Time>
+<TimeTick>1528193835</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="328" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="294" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="292" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 9 (Row 9)]]></Disp>
+</NodeArgs>
+</AIter>
+<AIter rID="T183" iterID="10" isCountable="False" >
+<Step rID="T184">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:16]]></Time>
+<TimeTick>1528193836</TimeTick>
+<Step rID="T185">
+<Obj plainTxt="False" ><![CDATA[fromCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Los Angeles"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:16]]></Time>
+<TimeTick>1528193836</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="333" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[fromCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T186">
+<Obj plainTxt="False" ><![CDATA[toCity.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Paris"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:16]]></Time>
+<TimeTick>1528193836</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="335" Source="BookFlight" SourceLine="2" >
+<Disp><![CDATA[toCity.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T187">
+<Obj plainTxt="False" ><![CDATA[datePicker.SetDate]]></Obj>
+<Details plainTxt="False" ><![CDATA["23-Jun-2018"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:16]]></Time>
+<TimeTick>1528193836</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="337" Source="BookFlight" SourceLine="3" >
+<Disp><![CDATA[datePicker.SetDate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T188">
+<Obj plainTxt="False" ><![CDATA[Class.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["Business"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:17]]></Time>
+<TimeTick>1528193837</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="339" Source="BookFlight" SourceLine="4" >
+<Disp><![CDATA[Class.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T189">
+<Obj plainTxt="False" ><![CDATA[numOfTickets.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["3"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:18]]></Time>
+<TimeTick>1528193838</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="341" Source="BookFlight" SourceLine="5" >
+<Disp><![CDATA[numOfTickets.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T190">
+<Obj plainTxt="False" ><![CDATA[FIND FLIGHTS.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:18]]></Time>
+<TimeTick>1528193838</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="343" Source="BookFlight" SourceLine="6" >
+<Disp><![CDATA[FIND FLIGHTS.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T191">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:18]]></Time>
+<TimeTick>1528193838</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="344" Source="BookFlight" SourceLine="9" >
+<Disp><![CDATA[SELECT FLIGHT.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T192">
+<Obj plainTxt="False" ><![CDATA[flightsDataGrid.SelectCell]]></Obj>
+<Details plainTxt="False" ><![CDATA[1, 1]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:18]]></Time>
+<TimeTick>1528193838</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="346" Source="BookFlight" SourceLine="12" >
+<Disp><![CDATA[flightsDataGrid.SelectCell]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T193">
+<Obj plainTxt="False" ><![CDATA[SELECT FLIGHT.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:19]]></Time>
+<TimeTick>1528193839</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="348" Source="BookFlight" SourceLine="13" >
+<Disp><![CDATA[SELECT FLIGHT.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T194">
+<Obj plainTxt="False" ><![CDATA[passengerName.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Test"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:19]]></Time>
+<TimeTick>1528193839</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="350" Source="BookFlight" SourceLine="14" >
+<Disp><![CDATA[passengerName.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T195">
+<Obj plainTxt="False" ><![CDATA[ORDER.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:19]]></Time>
+<TimeTick>1528193839</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="352" Source="BookFlight" SourceLine="15" >
+<Disp><![CDATA[ORDER.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T196">
+<Obj plainTxt="False" ><![CDATA[Order 216 completed]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfObject]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:25]]></Time>
+<TimeTick>1528193845</TimeTick>
+<HtmlStep rID="T197">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Text Area Output "Order 288 completed": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 6/5/2018 - 15:47:25</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<span class="text"></span><span class="text">Output the text into </span><span  class="Passed">Order_No</span><span class="text">  </span><span  class="Condition">DataTable</span><span  class="text"> output value. </span><br><span  class="text">Captured text is: </span><span  class="Passed">"327"</span> </span></body></html>]]></HTML>
+<TimeTick>1528193845</TimeTick>
+<NodeArgs eType="Verification" icon="11" nRep="354" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Output "Order 288 completed"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="11" nRep="353" status="Passed" Source="BookFlight" SourceLine="17" >
+<Disp><![CDATA[Order 216 completed]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T198">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:25]]></Time>
+<TimeTick>1528193845</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="356" Source="BookFlight" SourceLine="19" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T199">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:26]]></Time>
+<TimeTick>1528193846</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="358" Source="BookFlight" SourceLine="20" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T200">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:26]]></Time>
+<TimeTick>1528193846</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="360" Source="BookFlight" SourceLine="21" >
+<Disp><![CDATA[byNumberRadio.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T201">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["327"]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:26]]></Time>
+<TimeTick>1528193846</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="362" Source="BookFlight" SourceLine="22" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T202">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:27]]></Time>
+<TimeTick>1528193847</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="364" Source="BookFlight" SourceLine="23" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T203">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[6/5/2018 - 15:47:27]]></Time>
+<TimeTick>1528193847</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="366" Source="BookFlight" SourceLine="24" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="332" status="Passed" Source="BookFlight" SourceLine="1" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="StartIteration" icon="3" nRep="330" status="Passed" >
+<Disp><![CDATA[BookFlight Iteration 10 (Row 10)]]></Disp>
+</NodeArgs>
+</AIter>
+<Summary sTime="6/5/2018 - 15:45:20" eTime="6/5/2018 - 15:47:27" passed="9" failed="1" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Failed" >
+<Disp><![CDATA[BookFlight Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[OutPutData_Example Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="6/5/2018 - 15:45:19" eTime="6/5/2018 - 15:47:27" passed="9" failed="1" warnings="0" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test OutPutData_Example Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

@@ -1,0 +1,413 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HPE Unified Functional Testing" productVer="14.03" os="Windows 7" host="HIBACL54346"><DocLocation><![CDATA[D:\E drive\QTP_Training_Data\Capgemini Training\Web_Example\Count_Total_Links_and_Click and Verify_Example]]></DocLocation></General>
+<Doc rID="T1"   productName= "HPE Unified Functional Testing"  >
+<DName><![CDATA[Count_Total_Links_and_Click and Verify_Example]]></DName>
+<Res><![CDATA[Res20]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:46]]></Time>
+<TimeTick>1527849166</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[Run "chrome.exe",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run "chrome.exe",1]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:46]]></Time>
+<TimeTick>1527849166</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="11" status="Passed" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[Run "chrome.exe",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="5" nRep="10" status="Passed" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj ><![CDATA[Total No. of ]]></Obj>
+<Details ><![CDATA[Links25]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:55]]></Time>
+<TimeTick>1527849175</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="13" status="Passed" Source="Action1" SourceLine="9" >
+<Disp><![CDATA[Total No. of ]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:55]]></Time>
+<TimeTick>1527849175</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="14" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://plus.google.com/106537872929910857880]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:55]]></Time>
+<TimeTick>1527849175</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="15" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://motevich.blogspot.com/2008/05/qtp-descriptive-programming-processing.html]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:55]]></Time>
+<TimeTick>1527849175</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="16" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://motevich.blogspot.com/2008/05/qtp-descriptive-programming-processing.html]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:55]]></Time>
+<TimeTick>1527849175</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="17" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/2008/06/how-to-find-count-of-links-link-names.html?showComment=1213791960000#c2153527230691992561]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="18" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.blogger.com/comment.g?blogID=1147224322842838487&postID=2643394982276993232]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="19" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/2008/08/what-are-possible-vb-functions-we-can.html]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="20" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/2008/06/how-to-handle-browser-window-status.html]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="21" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="22" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/feeds/2643394982276993232/comments/default]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="23" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://feedburner.google.com/]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="24" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/search/label/Browser%20Related]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="25" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/search/label/Miscellaneous]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="26" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/search/label/QTP%20Operations]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="27" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttp://qtpdescriptiveprograms.blogspot.com/search/label/VB%20Scripting]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:56]]></Time>
+<TimeTick>1527849176</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="28" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.blogger.com/]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:57]]></Time>
+<TimeTick>1527849177</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="29" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.blogger.com/]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:57]]></Time>
+<TimeTick>1527849177</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="30" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linksms:?body=Hi,+check+out+QTP+Scripting+at+http://qtpdescriptiveprograms.blogspot.com/%3Fspref%3Dsms]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:57]]></Time>
+<TimeTick>1527849177</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="31" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.blogger.com/home#create]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:57]]></Time>
+<TimeTick>1527849177</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="32" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.blogger.com/]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:57]]></Time>
+<TimeTick>1527849177</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="33" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://plus.google.com/share?app=110&url=http%3A%2F%2Fqtpdescriptiveprograms.blogspot.com%2F2008%2F06%2Fhow-to-find-count-of-links-link-names.html]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:57]]></Time>
+<TimeTick>1527849177</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="34" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T29">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.googleadservices.com/pagead/aclk?sa=L&ai=CUHMG9x4RW_rUBMrCugTGhLfIDcjU-uhRtfvvgpYHwI23ARABIIqtlwtg5YKAgNgOoAHW8N26A8gBAagDAcgDygSqBIMCT9BpZIKjUNNuLywLImQxskie5vNhW68O_ur-1fnj_rBMpfvAfmJQ1zSh8I-mds16x4b8_9WhWd7hLOm7euG6sfpsTM8Z-MKP_T45X39sSj1OL3gvhnn0ieaHkIOGU4qyeS3Wovhy5e6c-zCglcy_sGdSH4rNQifLZkagCAbo_avai2cYOHkPyuQV9MrkrVbeoBkVSVbV6O9LMfqHy7NWP9hrP743A4fqFVo3q0vpzrVBYN1heNXSeiPIWN6qKABUh7vlTgy1MYAk3CVlbXGPUmKgnCYCeqUDvYiDs_Xf_icChy-5C6D9hiuObnQqp2ehGAoEJatPmJB9RJWv3N_DhodjYYAHko-iRagHjs4bqAeNzRuoB9XJG6gH2csbqAfPzBuoB6a-G6gHmM4b2AcB0ggHCIBhEAEYArEJaTIlP7v8OvSACgHYEww&num=1&cid=CAASEuRogElnYfhKLYLi3O36UKXd9g&sig=AOD64_3iTXm0vNJCbu3S5-tA9qAOUgQahw&client=ca-pub-8379634368583656&adurl=https://crazylister.com/lp/ebay-listing-software-px%3Fads_adid%3D59620686670%26ads_cmpid%3D1412385729%26ads_creative%3D271207754538%26ads_matchtype%3D%26ads_network%3Dd%26ads_targetid%3Dkwd-0%26ttv%3D2%26utm_medium%3Dppc%26utm_source%3DAdwords%26utm_campaign%3D%7Bsmartgdnus1%7D%26utm_content%3Debaytemplates%26utm_term%3Dqtpdescriptiveprograms.blogspot.com%26utm_adid%3D271207754538]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:58]]></Time>
+<TimeTick>1527849178</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="35" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.googleadservices.com/pagead/aclk?sa=L&ai=CUHMG9x4RW_rUBMrCugTGhLfIDcjU-uhRtfvvgpYHwI23ARABIIqtlwtg5YKAgNgOoAHW8N26A8gBAagDAcgDygSqBIMCT9BpZIKjUNNuLywLImQxskie5vNhW68O_ur-1fnj_rBMpfvAfmJQ1zSh8I-mds16x4b8_9WhWd7hLOm7euG6sfpsTM8Z-MKP_T45X39sSj1OL3gvhnn0ieaHkIOGU4qyeS3Wovhy5e6c-zCglcy_sGdSH4rNQifLZkagCAbo_avai2cYOHkPyuQV9MrkrVbeoBkVSVbV6O9LMfqHy7NWP9hrP743A4fqFVo3q0vpzrVBYN1heNXSeiPIWN6qKABUh7vlTgy1MYAk3CVlbXGPUmKgnCYCeqUDvYiDs_Xf_icChy-5C6D9hiuObnQqp2ehGAoEJatPmJB9RJWv3N_DhodjYYAHko-iRagHjs4bqAeNzRuoB9XJG6gH2csbqAfPzBuoB6a-G6gHmM4b2AcB0ggHCIBhEAEYArEJaTIlP7v8OvSACgHYEww&num=1&cid=CAASEuRogElnYfhKLYLi3O36UKXd9g&sig=AOD64_3iTXm0vNJCbu3S5-tA9qAOUgQahw&client=ca-pub-8379634368583656&adurl=https://crazylister.com/lp/ebay-listing-software-px%3Fads_adid%3D59620686670%26ads_cmpid%3D1412385729%26ads_creative%3D271207754538%26ads_matchtype%3D%26ads_network%3Dd%26ads_targetid%3Dkwd-0%26ttv%3D2%26utm_medium%3Dppc%26utm_source%3DAdwords%26utm_campaign%3D%7Bsmartgdnus1%7D%26utm_content%3Debaytemplates%26utm_term%3Dqtpdescriptiveprograms.blogspot.com%26utm_adid%3D271207754538]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:58]]></Time>
+<TimeTick>1527849178</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="36" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.googleadservices.com/pagead/aclk?sa=L&ai=CUHMG9x4RW_rUBMrCugTGhLfIDcjU-uhRtfvvgpYHwI23ARABIIqtlwtg5YKAgNgOoAHW8N26A8gBAagDAcgDygSqBIMCT9BpZIKjUNNuLywLImQxskie5vNhW68O_ur-1fnj_rBMpfvAfmJQ1zSh8I-mds16x4b8_9WhWd7hLOm7euG6sfpsTM8Z-MKP_T45X39sSj1OL3gvhnn0ieaHkIOGU4qyeS3Wovhy5e6c-zCglcy_sGdSH4rNQifLZkagCAbo_avai2cYOHkPyuQV9MrkrVbeoBkVSVbV6O9LMfqHy7NWP9hrP743A4fqFVo3q0vpzrVBYN1heNXSeiPIWN6qKABUh7vlTgy1MYAk3CVlbXGPUmKgnCYCeqUDvYiDs_Xf_icChy-5C6D9hiuObnQqp2ehGAoEJatPmJB9RJWv3N_DhodjYYAHko-iRagHjs4bqAeNzRuoB9XJG6gH2csbqAfPzBuoB6a-G6gHmM4b2AcB0ggHCIBhEAEYArEJaTIlP7v8OvSACgHYEww&num=1&cid=CAASEuRogElnYfhKLYLi3O36UKXd9g&sig=AOD64_3iTXm0vNJCbu3S5-tA9qAOUgQahw&client=ca-pub-8379634368583656&adurl=https://crazylister.com/lp/ebay-listing-software-px%3Fads_adid%3D59620686670%26ads_cmpid%3D1412385729%26ads_creative%3D271207754538%26ads_matchtype%3D%26ads_network%3Dd%26ads_targetid%3Dkwd-0%26ttv%3D2%26utm_medium%3Dppc%26utm_source%3DAdwords%26utm_campaign%3D%7Bsmartgdnus1%7D%26utm_content%3Debaytemplates%26utm_term%3Dqtpdescriptiveprograms.blogspot.com%26utm_adid%3D271207754538]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:58]]></Time>
+<TimeTick>1527849178</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="37" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj ><![CDATA[The Name of the]]></Obj>
+<Details ><![CDATA[Linkhttps://www.google.com/ads/preferences/whythisad/en-US/NAGmyLypPIvhmXGG/#/AB3afGEAAAF5W1tbW251bGwsWzIsMTNdLG51bGwsbnVsbCxudWxsLG51bGwsWyIyODQwIl1dLFtudWxsLG51bGwsW251bGwsbnVsbCxudWxsLCJodHRwczovL2Rpc3BsYXlhZHMtZm9ybWF0cy5nb29nbGV1c2VyY29udGVudC5jb20vYWRzL3ByZXZpZXcvY29udGVudC5qcz9jbGllbnQ9d3RhXHUwMDI2b2JmdXNjYXRlZEN1c3RvbWVySWQ9ODY3ODE4NTgxOFx1MDAyNmNyZWF0aXZlSWQ9MjcxMjA3NzU0NTM4XHUwMDI2dmVyc2lvbklkPTBcdTAwMjZhZEdyb3VwQ3JlYXRpdmVJZD0yNDY0Mjk3NzczMzNcdTAwMjZodG1sUGFyZW50SWQ9cHJldi0wXHUwMDI2aGVpZ2h0PTBcdTAwMjZ3aWR0aD0wXHUwMDI2c2lnPUFDaVZCX3pCTnVRUzhyODhBMkxQWS1OZnFXSGdaQVVyUXciXV1dXV2bdOciw_YJWG7N25V-fwcBAYtTS8dpmtLcdJfIdclXYLqAZ0kbL3spminkcm8uAaS_velMvxc4gwlZXLRphxht1qtQfiBT5dNr4q_rE_laccx-H6OVQZh_BJrTSsgOK2AOBNsKW0yJEKfDZ7kP26-bkFqpl27H_fQw0hx_T0FswFqW8_lm9BJHFnHu_oHW7Uy1Dr6fw5fXm4PMPcDSHyKjXL6Wo2VMOJs71WSReonMVLxiSd9G9EFxMa1Ms3oSOdApQe0FIwCbWdO0vksfn1hdLB4lhxZ_w7DGl9_IFIfGIZMaIFsAOqIsrb73OIlK6gjlY4xew2XB5UijkEW81VDM,bZXnwulGTuUEtE5dXoDf6w&E_3BdPTkqccItfvvgpYHEMGXvaEFGKrUmUUiD2NyYXp5bGlzdGVyLmNvbTIICAUTGIuiCxRCF2NhLXB1Yi04Mzc5NjM0MzY4NTgzNjU2SABYAXAB&https://googleads.g.doubleclick.net/pagead/conversion/?ai=CUHMG9x4RW_rUBMrCugTGhLfIDcjU-uhRtfvvgpYHwI23ARABIIqtlwtg5YKAgNgOoAHW8N26A8gBAagDAcgDygSqBIMCT9BpZIKjUNNuLywLImQxskie5vNhW68O_ur-1fnj_rBMpfvAfmJQ1zSh8I-mds16x4b8_9WhWd7hLOm7euG6sfpsTM8Z-MKP_T45X39sSj1OL3gvhnn0ieaHkIOGU4qyeS3Wovhy5e6c-zCglcy_sGdSH4rNQifLZkagCAbo_avai2cYOHkPyuQV9MrkrVbeoBkVSVbV6O9LMfqHy7NWP9hrP743A4fqFVo3q0vpzrVBYN1heNXSeiPIWN6qKABUh7vlTgy1MYAk3CVlbXGPUmKgnCYCeqUDvYiDs_Xf_icChy-5C6D9hiuObnQqp2ehGAoEJatPmJB9RJWv3N_DhodjYYAHko-iRagHjs4bqAeNzRuoB9XJG6gH2csbqAfPzBuoB6a-G6gHmM4b2AcB0ggHCIBhEAEYArEJaTIlP7v8OvSACgHYEww&sigh=_6nnKYPxwGk]]></Details>
+<Time><![CDATA[6/1/2018 - 16:02:58]]></Time>
+<TimeTick>1527849178</TimeTick>
+<NodeArgs eType="User" icon="6" nRep="38" status="Passed" Source="Action1" SourceLine="13" >
+<Disp><![CDATA[The Name of the]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="6/1/2018 - 16:02:46" eTime="6/1/2018 - 16:02:58" passed="27" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" status="Passed" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" status="Passed" >
+<Disp><![CDATA[Count_Total_Links_and_Click and Verify_Example Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="6/1/2018 - 16:02:43" eTime="6/1/2018 - 16:02:58" passed="27" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Passed" >
+<Disp><![CDATA[Test Count_Total_Links_and_Click and Verify_Example Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>

@@ -1,0 +1,28 @@
+2018-06-13 14:42:31,867 [1] INFO  - Loaded appender: BufferingForwardingAppender
+2018-06-13 14:42:31,868 [1] INFO  - Loaded appender: FileAppenderInternal
+2018-06-13 14:42:31,868 [1] INFO  - Loaded appender: RollingFileAppender_HTMLReporter
+2018-06-13 14:42:31,869 [1] INFO  - Loaded appender: RollingFileAppender_Mobile
+2018-06-13 14:42:31,869 [1] INFO  - Loaded appender: FileAppenderExternal
+2018-06-13 14:42:31,870 [1] INFO  - Loaded appender: UserLoggerAppender
+2018-06-13 14:42:31,870 [1] INFO  - Loaded appender: BufferingForwardingAppender
+2018-06-13 14:42:31,871 [1] INFO  - Loaded appender: FileAppenderInternal
+2018-06-13 14:42:31,871 [1] INFO  - Loaded appender: RollingFileAppender_HTMLReporter
+2018-06-13 14:42:31,872 [1] INFO  - Loaded appender: RollingFileAppender_Mobile
+2018-06-13 14:42:31,872 [1] INFO  - Loaded appender: FileAppenderExternal
+2018-06-13 14:42:31,872 [1] INFO  - Loaded appender: UserLoggerAppender
+2018-06-13 14:42:35,660 [34] INFO  - 
+Request:
+
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+  <Body>
+    <GetFlights xmlns="HP.SOAQ.SampleApp">
+      <DepartureCity>Sydney</DepartureCity>
+      <ArrivalCity>Frankfurt</ArrivalCity>
+    </GetFlights>
+  </Body>
+</Envelope>
+
+2018-06-13 14:42:35,668 [34] INFO  - URL: http://localhost:8000/HPFlights_SOAP
+2018-06-13 14:42:37,781 [34] ERROR - Structural CheckPoint failed : Trying to get XmlNode for Xpath: /*[local-name(.)='Envelope'][1], XmlNode was null
+2018-06-13 14:42:37,781 [34] INFO  - 
+2018-06-13 14:42:37,782 [34] INFO  - Structural Validation: False

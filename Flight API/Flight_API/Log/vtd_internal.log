@@ -1,0 +1,68 @@
+2018-06-13 14:42:31,874 [1] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:31,874 [1] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:31,879 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,879 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,879 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,880 [1] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:31,881 [1] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:31,881 [1] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:31,881 [1] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:31,881 [1] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:31,881 [1] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:31,881 [1] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:31,881 [1] ERROR - Error occured while converting the value '' to type 'System.UInt32' with english culture
+System.Exception:  is not a valid value for UInt32. ---> System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at HP.ST.Fwk.RunTimeFWK.Utilities.Utils.ConvertValue(Object val, Type valType)
+2018-06-13 14:42:37,757 [34] ERROR - Unable to connect to the remote server :    at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at HP.Utt.St.Utilities.StHttpRequest.SendWebRequest()
+   at HP.Utt.St.Utilities.StHttpRequest.ConstructRequest()
+   at HP.Utt.St.Utilities.StHttpRequest.SendRequest(Boolean send)
+   at HP.ST.Ext.CommunicationChannels.ConcreteChannels.HttpChannel.Send(Message request, Context context, Boolean oneWay)
+   at HP.ST.Ext.CommunicationChannels.ConcreteChannels.HttpChannel.Send(Message request, Context context)
+   at HP.ST.Ext.CommunicationChannels.ConcreteChannels.EncodingChannel.Send(Message request, Context context, Boolean isOneWay)
+   at HP.ST.Ext.CommunicationChannels.ConcreteChannels.EncodingChannel.Send(Message request, Context context)
+   at HP.ST.Ext.WebServicesActivities.StServiceCallActivity.SendRequestAndHandleResponse(ChannelBase channel, Message request, Context context)
+   at HP.ST.Ext.WebServicesActivities.StServiceCallActivity.SendRequestAndHandleResponse(String envelope, Context context, ChannelPipeline pipeline)
+   at HP.ST.Ext.WebServicesActivities.StServiceCallActivity.ExecuteStep()
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Any
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Flight
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:37,759 [34] ERROR - Cannot generate XPath to Attachments
+2018-06-13 14:42:37,773 [34] ERROR - Trying to get XmlNode for Xpath: /*[local-name(.)='Envelope'][1], XmlNode was null
+2018-06-13 14:42:37,773 [34] ERROR - Trying to get XmlNode for Xpath: /*[local-name(.)='Envelope'][1], XmlNode was null
+2018-06-13 14:42:37,781 [34] ERROR - Structural CheckPoint failed :Trying to get XmlNode for Xpath: /*[local-name(.)='Envelope'][1], XmlNode was null

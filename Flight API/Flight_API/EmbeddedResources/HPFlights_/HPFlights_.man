@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ID>ebfba7af-c981-4753-bd77-81eccdba0519</ID>
+  <Name>HPFlights_</Name>
+  <Type>WSDL</Type>
+  <Version>1</Version>
+  <CreationDate>2018-06-13T12:58:34.5543779+05:30</CreationDate>
+  <UpdateDate>2018-06-13T12:58:34.5543779+05:30</UpdateDate>
+  <LoaderID>SignatureResourceHandler</LoaderID>
+  <MetaDataSignatureFile>b0b41fea-ca31-42bd-921e-93f5c593d991.xml</MetaDataSignatureFile>
+  <TestResourceId>b0b41fea-ca31-42bd-921e-93f5c593d991</TestResourceId>
+  <RepositoryType>TestRepository</RepositoryType>
+  <SignatureCodonId>HP.ST.WebServiceWsdl</SignatureCodonId>
+  <SignatureAddinVersion>14.3.3048.0</SignatureAddinVersion>
+  <Properties>
+    <Item>
+      <Key>
+        <string>RepositoryPath</string>
+      </Key>
+      <Value>
+        <string>D:\E drive\QTP_Training_Data\Capgemini Training\Flight API\Flight_API\EmbeddedResources</string>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        <string>ResourceOrigin</string>
+      </Key>
+      <Value>
+        <string>D:\E drive\QTP_Training_Data\Capgemini Training\Flight API\Flight_API\EmbeddedResources\HPFlights_</string>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        <string>PrototypeDbVersion</string>
+      </Key>
+      <Value>
+        <string>14.3.3048.0</string>
+      </Value>
+    </Item>
+  </Properties>
+</ResourceManifest>

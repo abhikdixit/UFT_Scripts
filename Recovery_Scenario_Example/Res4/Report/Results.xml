@@ -1,0 +1,632 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HPE Unified Functional Testing" productVer="14.03" os="Windows 7" host="HIBACL54346"><DocLocation><![CDATA[D:\E drive\QTP_Training_Data\Capgemini Training\Recovery_Scenario_Example]]></DocLocation></General>
+<Doc rID="T1"   productName= "HPE Unified Functional Testing"  >
+<DName><![CDATA[Recovery_Scenario_Example]]></DName>
+<Res><![CDATA[Res4]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<DIter rID="T3" iterID="1" >
+<Action rID="T4">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:17]]></Time>
+<TimeTick>1527586277</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:17]]></Time>
+<TimeTick>1527586277</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="10" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:17]]></Time>
+<TimeTick>1527586277</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="12" Source="Action1" SourceLine="1" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:17]]></Time>
+<TimeTick>1527586277</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="14" Source="Action1" SourceLine="2" >
+<Disp><![CDATA[byNumberRadio.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["111"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:18]]></Time>
+<TimeTick>1527586278</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="16" Source="Action1" SourceLine="3" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:18]]></Time>
+<TimeTick>1527586278</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="18" Source="Action1" SourceLine="4" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:19]]></Time>
+<TimeTick>1527586279</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="20" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="9" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="5/29/2018 - 15:01:16" eTime="5/29/2018 - 15:01:19" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="7" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="6" >
+<Disp><![CDATA[Recovery_Scenario_Example Iteration 1 (Row 1)]]></Disp>
+</NodeArgs>
+</DIter>
+<DIter rID="T12" iterID="2" >
+<Action rID="T13">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:20]]></Time>
+<TimeTick>1527586280</TimeTick>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:20]]></Time>
+<TimeTick>1527586280</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="27" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:20]]></Time>
+<TimeTick>1527586280</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="29" Source="Action1" SourceLine="1" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:21]]></Time>
+<TimeTick>1527586281</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="31" Source="Action1" SourceLine="2" >
+<Disp><![CDATA[byNumberRadio.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["55"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:21]]></Time>
+<TimeTick>1527586281</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="33" Source="Action1" SourceLine="3" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:21]]></Time>
+<TimeTick>1527586281</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="35" Source="Action1" SourceLine="4" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;identify&nbsp;the&nbsp;object&nbsp;"NEW&nbsp;SEARCH"&nbsp;(of&nbsp;class&nbsp;WpfButton).<br/>Verify&nbsp;that&nbsp;this&nbsp;object's&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:42]]></Time>
+<TimeTick>1527586302</TimeTick>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Text = NEW SEARCH<br>devname = newSearchBtn<br>]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:42]]></Time>
+<TimeTick>1527586302</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="39" status="Warning" nType="Description" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[NEW SEARCH]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA[Order_Number_Recovery]]></Obj>
+<Details plainTxt="False" ><![CDATA[<SPAN class=text><div align=left><dl><b><u>Scenario</u>: </b>Order_Number_Recovery<br><b><u>Defined in</u>: </b>Order_Number_Recovery.qrs<br><b><u>Description</u>: </b><br><b><u>Post-recovery operation</u>: </b>Proceed to next test iteration.<br><br><b><u>Activated by trigger</u>:</b><dd><u>Type</u>: Pop-up window<br><u>Contains the caption</u>: Error</dd><dt><br><b><u>The current test step details</u>:</b><dd><u>Object</u>: WpfButton("NEW SEARCH")<br><u>Method</u>: Click<br><u>Arguments</u>: EMPTY<br><u>Result</u>: Cannot identify the object</dd></dt></dl></div></SPAN>]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:42]]></Time>
+<TimeTick>1527586302</TimeTick>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[<SPAN class=text><div align=left><b><u>Hierarchical description</u>:</b> WpfWindow( devname := HPE MyFlight Sample Application, regexpwndtitle := HPE MyFlight Sample Application, wpftypename := window ).Dialog( is child window := 0, is owned window := -1, nativeclass := #32770, text := Error )</div></SPAN>]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:42]]></Time>
+<TimeTick>1527586302</TimeTick>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[Enter]]></Obj>
+<Details plainTxt="False" ><![CDATA[<SPAN class=text><div align=left><b><u>Generate the keyboard event</u>:</b> Enter</div></SPAN>]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:42]]></Time>
+<TimeTick>1527586302</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="42" nType="Keyboard operation" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[Enter]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="12" nRep="41" nType="Detected object" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[Skip Iteration]]></Obj>
+<Details plainTxt="False" ><![CDATA[Proceed to next test iteration.]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:42]]></Time>
+<TimeTick>1527586302</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="43" nType="Test" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[Skip Iteration]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="11" nRep="40" nType="PopUp Window" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[Order_Number_Recovery]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="9" nRep="38" status="Warning" nType="Run Error" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[NEW SEARCH]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[Stop global iteration replay]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:43]]></Time>
+<TimeTick>1527586303</TimeTick>
+<NodeArgs eType="General" icon="15" nRep="44" status="Information" >
+<Disp><![CDATA[Stop global iteration replay]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="26" status="Warning" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="5/29/2018 - 15:01:20" eTime="5/29/2018 - 15:01:43" passed="0" failed="0" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="24" status="Warning" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="23" status="Warning" >
+<Disp><![CDATA[Recovery_Scenario_Example Iteration 2 (Row 2)]]></Disp>
+</NodeArgs>
+</DIter>
+<DIter rID="T27" iterID="3" >
+<Action rID="T28">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:43]]></Time>
+<TimeTick>1527586303</TimeTick>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:43]]></Time>
+<TimeTick>1527586303</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="51" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:43]]></Time>
+<TimeTick>1527586303</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="53" Source="Action1" SourceLine="1" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:43]]></Time>
+<TimeTick>1527586303</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="55" Source="Action1" SourceLine="2" >
+<Disp><![CDATA[byNumberRadio.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["112"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:44]]></Time>
+<TimeTick>1527586304</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="57" Source="Action1" SourceLine="3" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:44]]></Time>
+<TimeTick>1527586304</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="59" Source="Action1" SourceLine="4" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:44]]></Time>
+<TimeTick>1527586304</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="61" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="50" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="5/29/2018 - 15:01:43" eTime="5/29/2018 - 15:01:44" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="48" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="47" >
+<Disp><![CDATA[Recovery_Scenario_Example Iteration 3 (Row 3)]]></Disp>
+</NodeArgs>
+</DIter>
+<DIter rID="T36" iterID="4" >
+<Action rID="T37">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:45]]></Time>
+<TimeTick>1527586305</TimeTick>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:45]]></Time>
+<TimeTick>1527586305</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="68" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:45]]></Time>
+<TimeTick>1527586305</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="70" Source="Action1" SourceLine="1" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:45]]></Time>
+<TimeTick>1527586305</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="72" Source="Action1" SourceLine="2" >
+<Disp><![CDATA[byNumberRadio.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["56"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:45]]></Time>
+<TimeTick>1527586305</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="74" Source="Action1" SourceLine="3" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:01:46]]></Time>
+<TimeTick>1527586306</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="76" Source="Action1" SourceLine="4" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH]]></Obj>
+<Details plainTxt="False" ><![CDATA[Cannot&nbsp;identify&nbsp;the&nbsp;object&nbsp;"NEW&nbsp;SEARCH"&nbsp;(of&nbsp;class&nbsp;WpfButton).<br/>Verify&nbsp;that&nbsp;this&nbsp;object's&nbsp;properties&nbsp;match&nbsp;an&nbsp;object&nbsp;currently&nbsp;displayed&nbsp;in&nbsp;your&nbsp;application.]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:06]]></Time>
+<TimeTick>1527586326</TimeTick>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH]]></Obj>
+<Details plainTxt="False" ><![CDATA[Object's physical description:<br>Text = NEW SEARCH<br>devname = newSearchBtn<br>]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:06]]></Time>
+<TimeTick>1527586326</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="80" status="Warning" nType="Description" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[NEW SEARCH]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA[Order_Number_Recovery]]></Obj>
+<Details plainTxt="False" ><![CDATA[<SPAN class=text><div align=left><dl><b><u>Scenario</u>: </b>Order_Number_Recovery<br><b><u>Defined in</u>: </b>Order_Number_Recovery.qrs<br><b><u>Description</u>: </b><br><b><u>Post-recovery operation</u>: </b>Proceed to next test iteration.<br><br><b><u>Activated by trigger</u>:</b><dd><u>Type</u>: Pop-up window<br><u>Contains the caption</u>: Error</dd><dt><br><b><u>The current test step details</u>:</b><dd><u>Object</u>: WpfButton("NEW SEARCH")<br><u>Method</u>: Click<br><u>Arguments</u>: EMPTY<br><u>Result</u>: Cannot identify the object</dd></dt></dl></div></SPAN>]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:06]]></Time>
+<TimeTick>1527586326</TimeTick>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA[Error]]></Obj>
+<Details plainTxt="False" ><![CDATA[<SPAN class=text><div align=left><b><u>Hierarchical description</u>:</b> WpfWindow( devname := HPE MyFlight Sample Application, regexpwndtitle := HPE MyFlight Sample Application, wpftypename := window ).Dialog( is child window := 0, is owned window := -1, nativeclass := #32770, text := Error )</div></SPAN>]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:06]]></Time>
+<TimeTick>1527586326</TimeTick>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[Enter]]></Obj>
+<Details plainTxt="False" ><![CDATA[<SPAN class=text><div align=left><b><u>Generate the keyboard event</u>:</b> Enter</div></SPAN>]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:06]]></Time>
+<TimeTick>1527586326</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="83" nType="Keyboard operation" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[Enter]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="12" nRep="82" nType="Detected object" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[Error]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj plainTxt="False" ><![CDATA[Skip Iteration]]></Obj>
+<Details plainTxt="False" ><![CDATA[Proceed to next test iteration.]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:06]]></Time>
+<TimeTick>1527586326</TimeTick>
+<NodeArgs eType="Replay" icon="14" nRep="84" nType="Test" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[Skip Iteration]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="11" nRep="81" nType="PopUp Window" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[Order_Number_Recovery]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="9" nRep="79" status="Warning" nType="Run Error" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[NEW SEARCH]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[Stop global iteration replay]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:07]]></Time>
+<TimeTick>1527586327</TimeTick>
+<NodeArgs eType="General" icon="15" nRep="85" status="Information" >
+<Disp><![CDATA[Stop global iteration replay]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="67" status="Warning" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="5/29/2018 - 15:01:44" eTime="5/29/2018 - 15:02:07" passed="0" failed="0" warnings="1" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="65" status="Warning" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="64" status="Warning" >
+<Disp><![CDATA[Recovery_Scenario_Example Iteration 4 (Row 4)]]></Disp>
+</NodeArgs>
+</DIter>
+<DIter rID="T51" iterID="5" >
+<Action rID="T52">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio]]></Obj>
+<Details plainTxt="False" ><![CDATA[WpfWindow]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:07]]></Time>
+<TimeTick>1527586327</TimeTick>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:07]]></Time>
+<TimeTick>1527586327</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="92" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio.Activate]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA[WpfTabStrip.Select]]></Obj>
+<Details plainTxt="False" ><![CDATA["SEARCH ORDER"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:07]]></Time>
+<TimeTick>1527586327</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="94" Source="Action1" SourceLine="1" >
+<Disp><![CDATA[WpfTabStrip.Select]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA[byNumberRadio.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:07]]></Time>
+<TimeTick>1527586327</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="96" Source="Action1" SourceLine="2" >
+<Disp><![CDATA[byNumberRadio.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA[byNumberWatermark.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["113"]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:07]]></Time>
+<TimeTick>1527586327</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="98" Source="Action1" SourceLine="3" >
+<Disp><![CDATA[byNumberWatermark.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA[SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:08]]></Time>
+<TimeTick>1527586328</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="100" Source="Action1" SourceLine="4" >
+<Disp><![CDATA[SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA[NEW SEARCH.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[5/29/2018 - 15:02:08]]></Time>
+<TimeTick>1527586328</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="102" Source="Action1" SourceLine="5" >
+<Disp><![CDATA[NEW SEARCH.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="91" Source="Action1" SourceLine="0" >
+<Disp><![CDATA[HPE MyFlight Sample Applicatio]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="5/29/2018 - 15:02:07" eTime="5/29/2018 - 15:02:08" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="4" nRep="89" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<NodeArgs eType="StartIteration" icon="3" nRep="88" >
+<Disp><![CDATA[Recovery_Scenario_Example Iteration 5 (Row 5)]]></Disp>
+</NodeArgs>
+</DIter>
+<Summary sTime="5/29/2018 - 15:01:10" eTime="5/29/2018 - 15:02:08" passed="0" failed="0" warnings="2" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Warning" >
+<Disp><![CDATA[Test Recovery_Scenario_Example Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
